@@ -1,0 +1,61 @@
+
+<div class="container">
+  <form action="">
+    <div class="row">
+      <div class="col-25">
+        <label>Picture</label>
+      </div>
+      <div class="col-75">
+        <!--<div class="file-btn-container"><label for="pic" class="file-btn" type="button" [(ngModel)]="pic">Select File</label> </div>-->
+        <input class="pic-input" type="text" id="pic" name="pic" [(ngModel)]="pic" placeholder="Add picture..">
+        <!--<input class="pic-input" type="file" name="pic" id="pic">-->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label>Gender</label>
+      </div>
+      <div class="col-75">
+        <div class="radio-btn-container">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Male" [(ngModel)]="gender">
+            <label class="form-check-label" for="inlineRadio1">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Female" [(ngModel)]="gender">
+            <label class="form-check-label" for="inlineRadio2">Female</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="name">Pet Name</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="name" name="name" [(ngModel)]="name" placeholder="Pet name..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="age">Age</label>
+      </div>
+      <div class="col-75">
+        <input class="age-input" type="number" min="0" max="60" id="age" name="age" [(ngModel)]="age" placeholder="Age..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="subject">Medications</label>
+      </div>
+      <div class="col-75">
+        <textarea id="subject" name="subject" [(ngModel)]="medication"  placeholder="This will change.." style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Submit" (click)="submitNewPet()">
+    </div>
+  </form>
+
+  <!--{{pic}}<br>{{gender}}<br>{{name}}<br>{{age}}<br>{{medication}}-->
+</div>

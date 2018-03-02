@@ -1,0 +1,75 @@
+.container {
+  margin: 50px auto;
+  min-height: 635px;
+  width: 100%;
+}
+
+.account-body {
+  /*height: 600px;*/
+}
+
+agm-map {
+  height: 300px;
+}
+
+.map-control {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 2px rgba(33, 33, 33, 0.4);
+  font-family: 'Roboto', 'sans-serif';
+  margin: 10px;
+  /* Hide the control initially, to prevent it from appearing
+     before the map loads. */
+  display: none;
+}
+
+/* Display the control once it is inside the map. */
+#map .map-control {
+  display: block;
+}
+
+.selector-control {
+  font-size: 14px;
+  line-height: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.search-container {
+  padding: 10px;
+}
+
+.search-bar, .zip {
+  margin-top: 10px;
+}
+
+input {
+  width: 100%;
+  height: 35px;
+  border-radius: 4px;
+  border: 1px solid #38383840;
+  padding: 5px;
+}
+
+::placeholder {
+  color: rgba(65, 65, 65, 0.75);
+  opacity: .8; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: rgba(65, 65, 65, 0.75);
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: rgba(65, 65, 65, 0.75);
+}
+
+.search-btn {
+  text-align: center;
+  width: 100%;
+  background-color: #52a595;
+  color: white;
+  border-radius: 4px;
+  outline: none;
+  margin: 15px 0 0 0;
+}

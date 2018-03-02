@@ -1,0 +1,99 @@
+<div class="wrapper">
+  <div class="body ">
+    <div class="body-info row">
+      <div class="add-container col-6">
+        <div class="add-icon" (click)="togglePetForm()">
+          <i class="fas fa-plus-circle float-left"></i>
+        </div>
+        <h4 class="add-pet float-left" (click)="togglePetForm()">Add Pet</h4>
+      </div>
+
+      <div class="edit-container col-6" (click)="toggleEditMode()">
+        <h4 *ngIf="!editModeOn" class="edit-pet float-right">Edit</h4>
+        <div *ngIf="!editModeOn" class="edit-icon float-right">
+          <i class="far fa-edit"></i>
+        </div>
+        <h4 *ngIf="editModeOn" class="edit-pet float-right">Close</h4>
+      </div>
+    </div>
+  </div>
+
+  <div [@popOverState]="hidePetForm" class="form-container row">
+    <div class="form col-lg-12">
+      <div class="x-icon-container" (click)="togglePetForm()">
+        <i class="fas fa-times x-icon float-right"></i>
+      </div>
+      <app-add-pet-form></app-add-pet-form>
+    </div>
+  </div>
+
+  <div class="pet-container row">
+    <div class="each-pet col-lg-3 col-12" *ngFor="let item of petInfoList; let i = index">
+      <div class="delete" (click)="removePet(item)" [@editShow]="editShowHide">
+        <i class="fas fa-times"></i> Delete
+      </div>
+      <div class="box">
+        <img class="pet-pic box-layer_bottom" src={{item.pic}}>
+        <div class="box-layer_top" (click)="overviewClick(i)">
+          <div class="text box-text" data-toggle="modal" data-target=".bd-example-modal-lg">View {{item.name}}'s Profile</div>
+        </div>
+      </div>
+      <h4 class="col-lg-12 pet-info">{{item.name}}</h4>
+    </div>
+  </div>
+</div>
+
+<!--modal-->
+<div *ngIf="listLoaded" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" id="back-btn" data-dismiss="modal"><i class="fas fa-arrow-left"></i></button>
+      </div>
+      <div class="modal-body row">
+        <div class="pic">
+          <img class="modal-pet-pic box-layer_bottom" src='{{petInfoList[petIndex].pic}}'>
+          <div class="edit-delete">
+            <button class="edit-delete-btn" type="button">Edit</button>
+            <button class="edit-delete-btn" type="button">Delete</button>
+          </div>
+        </div>
+        <div class="modal-pet-info col-lg-9">
+          <div class="name info row">
+            <label class="label col-lg-2 col-sm-12">Name:</label>
+            <h5 class="col-lg-8 col-sm-12">{{petInfoList[petIndex].name}}</h5>
+          </div>
+          <div class="age info row">
+            <label class="label col-lg-2 col-sm-12">Age:</label>
+            <h5 class="col-lg-8 col-sm-12">{{petInfoList[petIndex].age}}</h5>
+          </div>
+          <div class="gender info row">
+            <label class="label col-lg-2 col-sm-12">Gender:</label>
+            <h5 class="col-lg-8 col-sm-12">{{petInfoList[petIndex].gender}}</h5>
+          </div>
+          <div class="medication info row">
+            <label class="label col-lg-2 col-sm-12">Medication:</label>
+            <h5 id="medication" class="col-lg-8 col-sm-12">{{medication}} </h5>
+          </div>
+          <div class="treats info row">
+            <label class="label col-lg-2 col-sm-12">Favorite treats:</label>
+            <h5 class="col-lg-8 col-sm-12">{{petInfoList[petIndex].treats}}</h5>
+          </div>
+          <div class="events-container">
+            <div class="upcoming-events info row">
+              <label class="label col-12">Upcoming events</label>
+              <div [ngClass]="{'col-12': overviewEventDates.length == 1}" class="col-lg-6 col-sm-12" *ngFor="let item of overviewEventDates; let i = index">
+                <div class="modal-box">
+                  <div>{{item}}</div>
+                  <div>{{overViewEventTime[i]}}</div>
+                  <div>{{overviewEventTasks[i]}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="bottom-close" type="button" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+* {
+  font-family: 'Dosis', sans-serif;
+}
+
+a.active {
+  color: #f1be77 !important;
+}
+
+.container {
+  width: 100%;
+}
+
+#full-bar {
+  background-color: #31708fcc;
+}
+.navbar {
+  background: none !important;
+}
+
+.text-primary:hover {
+  color: #f1be77 !important;
+}
+
+@media(max-width: 34em) {
+  .navbar {
+  }
+}
+
+.icon-container {
+  width:100%;
+}
+
+.icon-txt {
+  color: white;
+}
+
+.list-container{
+
+}
+
+.good-boy {
+  width: 100%;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-toggler {
+  cursor:pointer;
+  outline:0;
+  border:1px solid #ffffff5c;
+  margin-top: 18px;
+}
+
+.nav-link {
+  text-transform:uppercase;
+  font-weight:bold;
+}
+
+.text-primary {
+  color: #eceeef!important;
+}
+.nav-item {
+  padding: 0 1rem;
+}
+
+@media(max-width: 34em) {
+  .nav-item {
+    padding: 0;
+  }
+}
+
+@media(max-width: 34em) {
+  .nav-link {
+  font-weight:normal;
+  color:#fff !important;
+  }
+}
+
+.user-icon-container {
+  float: right;
+  color: white;
+}
+

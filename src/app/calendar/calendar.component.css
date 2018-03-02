@@ -1,0 +1,271 @@
+.container {
+  margin: 0 auto 150px;
+  width: 100%;
+  text-align: center;
+}
+
+.header {
+  position: relative;
+  width: 100%;
+  margin: 10px 0 30px;
+  border-radius: 4px;
+}
+
+.caret-container {
+  float: left;
+}
+
+.dates-container, .weekdays-container {
+  margin: 0 auto 0 10px;
+}
+
+.dates {
+  height: 100px;
+  margin: 1px;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  border-radius: 3px;
+}
+
+.weekdays {
+  position: relative;
+}
+
+.current-year {
+  font-size: 35px;
+  font-weight: bolder;
+}
+
+.current-month-date {
+  font-size: 22px;
+}
+
+.left-right-arrow {
+  font-size: 25px;
+  padding: 10px;
+  width: 100%;
+}
+
+.caret-btns {
+  background-color: transparent;
+  outline: 0;
+  padding: 0 20px 0 20px;
+  border: none;
+  border-radius: 4px;
+  margin: 0 8px 0 8px;
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+}
+
+.caret-btns:hover {
+  background-color: #528ca5a6;
+  color: white;
+}
+
+.calendar-col {
+  width: 14%;
+}
+
+@media screen and (max-width: 729px) {
+  .calendar-col {
+    width: 13%;
+  }
+
+  .container {
+    font-size: 10px;
+  }
+}
+
+.box {
+  float: left;
+  margin-left: 5px;
+  width: 90%;
+}
+
+.highlight-today {
+  color: white;
+  background-color: #528ca587;
+  border-radius: 90%;
+  width: 28px;
+  position: relative;
+  top: 5px;
+}
+
+.shift-date {
+  float: left;
+}
+
+.events {
+  font-size: 10px;
+}
+
+.add-event-container {
+  color: #87bdc369;
+  position: relative;
+  float: right;
+}
+
+.edit {
+  visibility: hidden;
+}
+
+.mouse-over {
+  visibility: visible;
+  background-color: transparent;
+  border: none;
+  outline: 0;
+  color: rgba(153, 153, 163, 0.8);
+  width: auto;
+}
+
+.mouse-over:hover {
+  color: rgba(49, 49, 59, 0.8);
+}
+
+.edit-btn-hidden {
+  visibility: hidden !important;
+}
+
+.day-num-container {
+  margin: 0 0 40px 0;
+}
+
+.day-numbers {
+  float: left;
+}
+
+.task-container {
+  margin: 0 auto;
+  font-size: 10px;
+}
+
+@media screen and (max-width: 450px) {
+  .date-picker-container {
+    margin-top: 15px;
+  }
+
+  .header {
+    margin: 10px 0 15px;
+  }
+
+  .highlight-today {
+    width: 15px;
+    top: 1px;
+  }
+
+  .task-container {
+    margin: 0 auto;
+    font-size: 5px;
+  }
+}
+
+.modal {
+  color: black;
+}
+
+.modal-footer, .modal-header {
+  border: none;
+}
+
+.add-txt-container {
+  font-size: 25px;
+  width: 100%;
+  text-align: center;
+  /*color: #8f3141;*/
+  margin-bottom: 10px;
+}
+
+.time {
+  margin: 0 0 0 16px;
+  width: 92%;
+}
+
+.event {
+  margin: 10px 0 0 16px;
+  width: 92%;
+}
+
+#subject {
+  border-radius: 4px;
+  width: 100%;
+  border-color: #ddd;
+  color: #6d6d6d;
+}
+
+#time {
+  border-radius: 4px;
+  width: 100%;
+  border: 1px solid #ddd;
+  color: #6d6d6d;
+}
+
+.btn-primary {
+  outline: none;
+  background-color: #81D2C7 !important;
+  border-color: #81D2C7 !important;
+}
+
+.btn-primary:hover {
+  outline: none;
+  background-color: #5eaea3 !important;
+  border-color: #5eaea3 !important;
+}
+
+.btn-secondary {
+  color: #696d6fcf !important;
+  border: none;
+}
+
+.btn-secondary:hover {
+  color: white !important;
+  background-color: rgba(140, 140, 140, 0.8);
+}
+
+.close {
+  float: right;
+}
+
+.pet-container {
+  width: 90%;
+  margin: 25px auto;
+  text-align: center;
+}
+
+.pet-container > h6 {
+  margin-bottom: 25px;
+}
+
+.pet-pic {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.each-pet {
+  margin-bottom: 25px;
+}
+
+.selected {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #00acc1;
+  padding: 13px;
+}
+
+.check-mark {
+  color: white;
+}
+
+.box-text {
+  font-size: 15px;
+  color: #4e4e4e;
+}
+
+
+

@@ -1,0 +1,33 @@
+<div *ngIf="loggedIn" id="full-bar">
+  <div class="container">
+    <div class="row">
+      <nav class="navbar navbar-toggleable-md navbar-inverse col-lg-8">
+
+        <div class="icon-container col-lg-12">
+          <div class="good-boy">
+            <h3 class="icon-txt"><a class="navbar-brand" id="logo"><img (click)="loginScreen()" src="../assets/images/goodboy-dog.png"></a>Good Boy</h3>
+          </div>
+        </div>
+
+
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end list-container" id="navbarSupportedContent">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-primary" routerLink="/pets" routerLinkActive="active">Pets</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary" routerLink="/calendar" routerLinkActive="active">Calendar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-primary" routerLink="/account" routerLinkActive="active">Account</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+

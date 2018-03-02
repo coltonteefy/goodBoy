@@ -1,0 +1,109 @@
+<div class="container">
+  <div class="header row">
+    <div class="today-container col-lg-6 col-sm-12">
+      <div class="current-year col-12">{{currentYear}}</div>
+      <div class="current-month-date col-12">{{monthNames[monthNum]}} {{today}}</div>
+    </div>
+    <div class="date-picker-container col-lg-6 col-sm-12">
+      <div class="date-picker col-12">
+        <mat-form-field>
+          <input matInput
+                 [matDatepicker]="picker"
+                 [(ngModel)]="date"
+                 (ngModelChange)="updateMyDate($event)"
+                 placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="left-right-arrow col-12">
+      <button class="caret-btns" type="button" (click)="subtractMonth()"><i class="fas fa-chevron-left"></i></button>
+      <button class="caret-btns" type="button" (click)="addMonth()"><i class="fas fa-chevron-right"></i></button>
+    </div>
+  </div>
+  <div class="weekdays-container row">
+    <div class="weekdays calendar-col visible-lg-up visible-md-up hidden-sm-down" *ngFor="let i of weekDays">
+      <div class="box">
+        <div class="day-names">{{i}}</div>
+      </div>
+    </div>
+    <div class="weekdays calendar-col hidden-md-up visible-sm-up" *ngFor="let i of shortHand">
+      <div class="box">
+        <div class="day-names">{{i}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="dates-container row">
+    <div class="dates calendar-col" *ngFor="let i of numEachMonth; let index = index" (mouseover)="mouseEnter(i)">
+      <div *ngIf="numEachMonth[index] == boxIndex" class="add-event-container">
+        <button type="button"
+                [class.mouse-over]="mouseOver"
+                class="float-right"
+                (click)="createPetList()"
+                data-toggle="modal"
+                data-target="#addEventModal"
+                [ngClass]="{'edit ': numEachMonth[index] != '','edit-btn-hidden ': numEachMonth[index] == ''}">...
+        </button>
+      </div>
+      <div class="day-num-container col-lg-6">
+        <div class="day-numbers"
+             [ngClass]="{'highlight-today': i == today, 'shift-date':eventDataCollection[0].task[i] != ''}">{{i}}
+        </div>
+      </div>
+      <div class="task-container col-lg-12" [ngClass]="{'events':eventDataCollection[0].task[i] != ''}">
+        <div>{{eventDataCollection[0].task[i]}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <div class="btn-container col-12">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="add-txt-container">
+          <h4 id="add-txt">New event on {{currentYear}} {{monthNames[monthNum]}} {{boxIndex}}</h4>
+        </div>
+
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <div class="row">
+            <mat-form-field class="time">
+              <input matInput name="timeOfEvent" [(ngModel)]="timeOfEvent" placeholder="Time of event">
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field class="event">
+              <textarea matInput name="newEvent" [(ngModel)]="newEvent" placeholder="Notes" matTextareaAutosize
+                        matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
+            </mat-form-field>
+          </div>
+        </form>
+        <div class="pet-container row">
+          <h6 class="col-12">Who's event</h6>
+          <div class="each-pet col-lg-3 col-12" *ngFor="let item of petInfoList; let i = index">
+            <div class="pet-box" (click)="choosePet(i)">
+              <img id="image" class="pet-pic box-layer_bottom" src={{item.pic}}>
+              <div class="box-layer_top" (click)="overviewClick(i)">
+                <div class="text box-text" data-toggle="modal" data-target=".bd-example-modal-lg">{{item.name}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addNewEvent()" data-dismiss="modal">Add Event</button>
+      </div>
+    </div>
+  </div>
+</div>
