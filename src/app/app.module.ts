@@ -7,9 +7,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {NgModule} from '@angular/core';
-import {FormsModule} from "@angular/forms";
 import {AgmCoreModule} from '@agm/core';
 import {HttpClientModule} from '@angular/common/http';
+import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import {AppComponent} from './app.component';
 import {NavBarComponent} from "./nav-bar/nav-bar.component";
@@ -17,12 +17,12 @@ import {LoginComponent} from "./login/login.component";
 import {AppRoutingModule} from './app-routing.module';
 import {PetsComponent} from "./pets/pets.component";
 import {CalendarComponent} from "./calendar/calendar.component";
-import {AccountComponent} from "./account/account.component";
 import {LoginService} from "./services/login.service";
 import {AddPetFormComponent} from "./add-pet-form/add-pet-form.component";
 import {FooterComponent} from "./footer/footer.component";
 import {CalendarEventsService} from "./services/calendar-events.service";
 import {PetInfoService} from "./services/pet-info.service";
+import {MapComponent} from "./map/map.component";
 
 @NgModule({
   declarations: [
@@ -31,9 +31,9 @@ import {PetInfoService} from "./services/pet-info.service";
     LoginComponent,
     PetsComponent,
     CalendarComponent,
-    AccountComponent,
     AddPetFormComponent,
-    FooterComponent
+    FooterComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +47,11 @@ import {PetInfoService} from "./services/pet-info.service";
     MatInputModule,
     FormsModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAuFeR6r_-A9F5Pcvgl5zuB5aIy08BwPEk'
+      apiKey: 'AIzaSyAuFeR6r_-A9F5Pcvgl5zuB5aIy08BwPEk',
+      libraries: ["places"]
     })
   ],
   providers: [

@@ -5,13 +5,14 @@ import {LoginComponent} from "./login/login.component";
 import {PetsComponent} from "./pets/pets.component";
 import {CalendarComponent} from "./calendar/calendar.component";
 import {AccountComponent} from "./account/account.component";
+import {MapComponent} from "./map/map.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'pets', component: PetsComponent },
   { path: 'calendar', component: CalendarComponent },
-  { path: 'account', component: AccountComponent }
+  { path: 'map', component: MapComponent }
 ];
 
 @NgModule({
