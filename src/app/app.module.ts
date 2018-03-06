@@ -10,6 +10,7 @@ import {NgModule} from '@angular/core';
 import {AgmCoreModule} from '@agm/core';
 import {HttpClientModule} from '@angular/common/http';
 import { FormControl, FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { AgmDirectionModule } from 'agm-direction';
 
 import {AppComponent} from './app.component';
 import {NavBarComponent} from "./nav-bar/nav-bar.component";
@@ -50,9 +51,10 @@ import {MapComponent} from "./map/map.component";
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAuFeR6r_-A9F5Pcvgl5zuB5aIy08BwPEk',
+      apiKey: '',
       libraries: ["places"]
-    })
+    }),
+    AgmDirectionModule
   ],
   providers: [
     LoginService,

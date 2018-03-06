@@ -41,12 +41,12 @@ export class CalendarComponent implements OnInit {
   petInfoList = [];
   tmpPicHolder = [];
 
-  constructor(private eventsService:CalendarEventsService, private petInfoService: PetInfoService) {
+  constructor(private eventsService:CalendarEventsService, private petInfoService:PetInfoService) {
   }
 
   ngOnInit() {
     this.petInfoService.finishPetLoad.subscribe(data => {
-      if(data == true) {
+      if (data == true) {
         this.petInfoList = this.petInfoService.petInfo[0].pets;
       }
     });
@@ -163,15 +163,15 @@ export class CalendarComponent implements OnInit {
     }
   }
 
-  choosePet(index : number) {
+  choosePet(index:number) {
     // this.tmpPicHolder[index] = this.petInfoList[index].pic;
-    if(!this.petName.includes(this.petInfoList[index].name)) {
+    if (!this.petName.includes(this.petInfoList[index].name)) {
       this.petName.push(this.petInfoList[index].name);
     } else {
-      this.petName.splice(this.petName.indexOf(this.petInfoList[index].name),1);
+      this.petName.splice(this.petName.indexOf(this.petInfoList[index].name), 1);
     }
 
-    if(this.petInfoList[index].pic != './assets/images/checked.png') {
+    if (this.petInfoList[index].pic != './assets/images/checked.png') {
       this.tmpPicHolder[index] = this.petInfoList[index].pic;
       this.petInfoList[index].pic = './assets/images/checked.png';
     } else {
@@ -180,12 +180,12 @@ export class CalendarComponent implements OnInit {
 
   }
 
-  mouseEnter(index: any) {
+  mouseEnter(index:any) {
     this.mouseOver = true;
     this.boxIndex = index;
   }
 
-  mouseExit(index: any) {
+  mouseExit(index:any) {
     this.mouseOver = false;
     this.boxIndex = -1;
   }
@@ -197,13 +197,9 @@ export class CalendarComponent implements OnInit {
   addNewEvent() {
     let newEventDate = moment(this.currentYear.toString() + '-' + (this.monthNum + 1).toString() + '-' + this.boxIndex.toString(), 'YYYY-MM-DD').format('YYYY-MM-DD');
 
-    for(let i = 0; i < this.tmpPicHolder.length; i++) {
-      if(this.tmpPicHolder[i] != undefined) {
-        this.petInfoList[i].pic = this.tmpPicHolder[i];
-      }
-    }
+    this.closeModal();
 
-    if(this.newEvent != "") {
+    if (this.newEvent != "") {
       this.eventsService.isFinished.next(false);
       this.eventsService.tmpHoldValue[0].time.push(this.timeOfEvent);
       this.eventsService.tmpHoldValue[0].pet.push(this.petName);
@@ -216,6 +212,14 @@ export class CalendarComponent implements OnInit {
       this.petName = [];
       this.petInfoList = [];
       this.tmpPicHolder = [];
+    }
+  }
+
+  closeModal() {
+    for (let i = 0; i < this.tmpPicHolder.length; i++) {
+      if (this.tmpPicHolder[i] != undefined) {
+        this.petInfoList[i].pic = this.tmpPicHolder[i];
+      }
     }
   }
 }

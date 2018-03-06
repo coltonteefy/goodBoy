@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import {LoginComponent} from "./login/login.component";
 import {PetsComponent} from "./pets/pets.component";
 import {CalendarComponent} from "./calendar/calendar.component";
-import {AccountComponent} from "./account/account.component";
 import {MapComponent} from "./map/map.component";
 
 const routes: Routes = [

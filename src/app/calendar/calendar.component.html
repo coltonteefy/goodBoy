@@ -59,13 +59,13 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel"
+<div class="modal fade" id="addEventModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header row">
         <div class="btn-container col-12">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
         <button type="button" class="btn btn-primary" (click)="addNewEvent()" data-dismiss="modal">Add Event</button>
       </div>
     </div>
