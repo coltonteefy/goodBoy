@@ -1,0 +1,92 @@
+<!--<div class="container">-->
+<!--<div class="account-body row">-->
+<!--<div class="map-container col-lg-8">-->
+<!--<div *ngIf="!applyDirections" class="form-group">-->
+<!--<label>Search</label>-->
+<!--<input placeholder="search for location" type="text" class="form-control" #search [formControl]="searchControl">-->
+<!--</div>-->
+<!--<div *ngIf="applyDirections" class="form-group">-->
+<!--<label>Origin</label>-->
+<!--<input placeholder="Current location" type="text" class="form-control" #origin (keyup)="originChanges()">-->
+<!--<label id="destination">Destination</label>-->
+<!--<input placeholder="{{address}}" type="text" class="form-control" #destination (keyup)="destinationChanges()">-->
+<!--</div>-->
+<!--<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [gestureHandling]="none">-->
+<!--<agm-direction *ngIf="applyDirections" [origin]="dir.origin" [destination]="dir.destination" [panel]="myPanel"></agm-direction>-->
+<!--<div *ngIf="!applyDirections">-->
+<!--<agm-marker [latitude]="lat" [longitude]="lng">-->
+<!--<agm-info-window *ngIf="name != ''"><div>{{name}}</div></agm-info-window>-->
+<!--</agm-marker>-->
+<!--</div>-->
+<!--</agm-map>-->
+<!--</div>-->
+<!--<div class="data col-lg-4">-->
+<!--<div *ngIf="!applyDirections" class="return-info row">-->
+<!--<div *ngIf="name != ''" class="data-back col-12"><h3>{{name}}</h3> <button class="direction-btn" type="button" (click)="getDirection()">Get directions</button></div>-->
+<!--<div *ngIf="address != ''" class="data-back col-12"><h4>Address:</h4> {{address}}</div>-->
+<!--<div *ngIf="phoneNumber != ''" class="data-back col-12"><h4>Phone:</h4> {{phoneNumber}}</div>-->
+<!--<div *ngIf="todayHours != ''" class="data-back col-12"><h4>Hours:</h4>-->
+<!--Currently {{open}} <br>-->
+<!--{{todayHours}}-->
+<!--</div>-->
+<!--<div *ngIf="miles > 0" class="data-back col-12">{{miles}} miles from current location</div>-->
+<!--<div *ngIf="website != ''" class="data-back col-12"><h5>Click <a href="{{website}}" target="_blank">here</a> for-->
+<!--website </h5></div>-->
+<!--</div>-->
+<!--<div #myPanel></div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="container">
+  <div class="search-info">
+    <div *ngIf="!applyDirections" class="form-group">
+      <label>Search</label>
+      <input placeholder="search for location" type="text" class="form-control" #search [formControl]="searchControl"
+             (keyup)="searchChanges()">
+    </div>
+    <div *ngIf="applyDirections" class="form-group">
+      <div class="col-12">
+        <button class="close-direction float-right" type="button" (click)="toggleDirectionPanel()">back to search
+        </button>
+      </div>
+      <label>Start</label>
+      <input placeholder="Current location" type="text" class="form-control" #origin (keyup)="originChanges()">
+      <label id="destination">End</label>
+      <input placeholder="{{address}}" type="text" class="form-control" #destination (keyup)="destinationChanges()">
+    </div>
+    <div class="data">
+      <div *ngIf="!applyDirections" class="return-info row">
+        <div *ngIf="name != ''" class="data-back col-12"><h3>{{name}}</h3>
+          <button class="direction-btn" type="button" (click)="getDirection()">Get directions</button>
+        </div>
+        <div *ngIf="address != ''" class="data-back col-12"><h4>Address:</h4> {{address}}</div>
+        <div *ngIf="phoneNumber != ''" class="data-back col-12"><h4>Phone:</h4> {{phoneNumber}}</div>
+        <div *ngIf="todayHours != ''" class="data-back col-12"><h4>Hours:</h4>
+          Currently {{open}} <br>
+          {{todayHours}}
+        </div>
+        <div *ngIf="miles > 0" class="data-back col-12">{{miles}} miles from current location</div>
+        <div *ngIf="website != ''" class="data-back col-12"><h5>Click <a href="{{website}}" target="_blank">here</a> for
+          website </h5></div>
+      </div>
+      <div id="myPanel" #myPanel></div>
+    </div>
+  </div>
+
+  <div class="map-container">
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [gestureHandling]="none">
+      <div *ngIf="applyDirections">
+        <agm-direction id="directions" [origin]="dir.origin" [destination]="dir.destination"
+                       [panel]="myPanel"></agm-direction>
+      </div>
+      <div *ngIf="!applyDirections">
+        <agm-marker [latitude]="lat" [longitude]="lng">
+          <agm-info-window *ngIf="name != ''">
+            <div>{{name}}</div>
+          </agm-info-window>
+        </agm-marker>
+      </div>
+    </agm-map>
+  </div>
+</div>
