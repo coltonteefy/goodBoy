@@ -24,6 +24,7 @@ import {FooterComponent} from "./footer/footer.component";
 import {CalendarEventsService} from "./services/calendar-events.service";
 import {PetInfoService} from "./services/pet-info.service";
 import {MapComponent} from "./map/map.component";
+import { CalendarEventViewComponent } from './calendar-event-view/calendar-event-view.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MapComponent} from "./map/map.component";
     CalendarComponent,
     AddPetFormComponent,
     FooterComponent,
-    MapComponent
+    MapComponent,
+    CalendarEventViewComponent
   ],
   imports: [
     BrowserModule,
