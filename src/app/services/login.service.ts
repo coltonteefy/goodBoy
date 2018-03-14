@@ -4,7 +4,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 @Injectable()
 export class LoginService {
 
-  store: BehaviorSubject<boolean> =  new BehaviorSubject(false);
+  store: BehaviorSubject<boolean> =  new BehaviorSubject(true);
   changes = this.store.asObservable();
 
   constructor() { }
