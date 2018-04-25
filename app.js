@@ -10,4 +10,5 @@ app.get('/calendar-events', (req, res) => res.json(calendar))
 app.get('/pets', (req, res) => res.json(pets))
 app.get('/**', (req, res, next) => res.sendFile(path.join(__dirname, '/dist/index.html')))
 
-app.listen(process.env.PORT || 3000, console.log("Listening on port 3000"));
+var port = process.env.PORT || 3000;
+app.listen(port, console.log("Listening on port 3000"));
