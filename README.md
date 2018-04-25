@@ -2,6 +2,7 @@
 
 https://nodejs.org/en/
 
+
 # Install Angular Globally
 
 npm install -g @angular/cli@latest
