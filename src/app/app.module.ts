@@ -51,7 +51,7 @@ import {MapComponent} from "./map/map.component";
     FormsModule,
     ReactiveFormsModule,
     AgmCoreModule.forRoot({
-      apiKey: '',
+      apiKey: 'AIzaSyAuFeR6r_-A9F5Pcvgl5zuB5aIy08BwPEk',
       libraries: ["places"]
     }),
     AgmDirectionModule

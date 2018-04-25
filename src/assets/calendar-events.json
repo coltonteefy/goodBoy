@@ -2,7 +2,7 @@
   "event": [
     {
       "time": "12:00 PM",
-      "pet": "Sadie",
+      "pet": ["Sadie"],
       "date": "2018-01-15",
       "task": ["Sadie needs meds", "George play date"]
     },
@@ -20,9 +20,9 @@
     },
     {
       "time": "12:00 PM",
-      "pet": ["All"],
+      "pet": ["George", "Jack"],
       "date": "2018-02-08",
-      "task": ["All dogs walk"]
+      "task": ["Go for a walk"]
     },
     {
       "time": "12:30 PM",
@@ -44,9 +44,9 @@
     },
     {
       "time": "10:00 AM",
-      "pet": ["All"],
+      "pet": ["Sadie, Jack"],
       "date": "2018-10-08",
-      "task": ["All dogs walk"]
+      "task": ["Go for a walk"]
     },
     {
       "time": "2:15 PM",

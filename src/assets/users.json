@@ -1,0 +1,64 @@
+{
+  "user": [
+    {
+      "name": "joe",
+      "password": "123123",
+      "pets": [
+        {
+          "pic": "./assets/images/george.jpg",
+          "name": "George",
+          "age": 10,
+          "gender": "Male",
+          "medication": "1 Mitaban twice a day",
+          "treats": "Bacon flavor Canine Carry Outs Dog Snacks"
+        },
+        {
+          "pic": "./assets/images/sadie.jpg",
+          "name": "Sadie",
+          "age": 3,
+          "gender": "Female",
+          "medication": "",
+          "treats": "Bully Sticks Braided"
+        },
+        {
+          "pic": "./assets/images/jack.jpg",
+          "name": "Jack",
+          "age": 5,
+          "gender": "male",
+          "medication": "2 Clomicalm 80mg once a day",
+          "treats": "Pork Ribz Range Riders Dog Treats"
+        },
+        {
+          "pic": "./assets/images/fatty.jpg",
+          "name": "Fatty",
+          "age": 2,
+          "gender": "Male",
+          "medication": "",
+          "treats": "Milk-Bone Biscuits"
+        }
+      ]
+    },
+    {
+      "name": "stacy",
+      "password": "nonono",
+      "pets": [
+        {
+          "pic": "https://sbly-web-prod-shareably.netdna-ssl.com/wp-content/uploads/2017/04/03181018/german_shepherd_pets_featured.jpg",
+          "name": "hercules",
+          "age": 1,
+          "gender": "Male",
+          "medication": "",
+          "treats": "Beef"
+        },
+        {
+          "pic": "http://petsaddlife.org/wp-content/themes/petsaddlife/static/component/block/quotes-carousel/Gwendolyn.jpg",
+          "name": "Mrs. Lady",
+          "age": 8,
+          "gender": "Female",
+          "medication": "",
+          "treats": "All of them"
+        }
+      ]
+    }
+  ]
+}

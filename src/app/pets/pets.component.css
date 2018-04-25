@@ -301,6 +301,10 @@
   outline: none;
 }
 
+.edit-delete-btn:hover {
+  color: black;
+}
+
 .modal-box {
   margin: 35px;
 }

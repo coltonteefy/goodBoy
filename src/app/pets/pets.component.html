@@ -55,7 +55,7 @@
           <img class="modal-pet-pic box-layer_bottom" src='{{petInfoList[petIndex].pic}}'>
           <div class="edit-delete">
             <button class="edit-delete-btn" type="button">Edit</button>
-            <button class="edit-delete-btn" type="button">Delete</button>
+            <button class="edit-delete-btn" type="button" data-dismiss="modal" (click)="deleteProfileView(petInfoList[petIndex].name, petInfoList[petIndex].age)">Delete</button>
           </div>
         </div>
         <div class="modal-pet-info col-lg-9">

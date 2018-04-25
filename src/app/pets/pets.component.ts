@@ -49,7 +49,13 @@ export class PetsComponent implements OnInit {
   overViewEventTime = [];
   listLoaded = false;
 
-  constructor(private loginService:LoginService, private petInfoService:PetInfoService, private calendarEventService:CalendarEventsService) {
+  currentUser = "joe";
+
+  userInfo = [];
+
+  constructor(private loginService:LoginService,
+              private petInfoService:PetInfoService,
+              private calendarEventService:CalendarEventsService) {
   }
 
   ngOnInit() {
@@ -71,10 +77,15 @@ export class PetsComponent implements OnInit {
     this.petInfoService.finishPetLoad.subscribe(data => {
       if (data == true) {
         this.petInfoList = this.petInfoService.petInfo[0].pets;
+
+        this.petInfoService.userInfo.map(res => {
+          console.log("HELLO" + res);
+        })
       }
     });
 
     this.petInfoService.getPets();
+    this.petInfoService.getUserPets();
     this.calendarEventService.getEvents();
   }
 
@@ -92,6 +103,14 @@ export class PetsComponent implements OnInit {
       if (num.name == data.name && num.age == data.age) {
         console.log(this.petInfoList[this.petInfoList.indexOf(num)]);
         this.petInfoList.splice(this.petInfoList.indexOf(num), 1);
+      }
+    })
+  }
+
+  deleteProfileView(name:string, age:any) {
+    this.petInfoList.map(data => {
+      if (name == data.name && age == data.age) {
+        this.petInfoList.splice(this.petInfoList.indexOf(data), 1);
       }
     })
   }
@@ -118,7 +137,6 @@ export class PetsComponent implements OnInit {
 
     this.calendarEvents.map(data => {
       for (let i = 0; i < data.task.length; i++) {
-        console.log(data.pet[i], "Loop");
         if (data.pet[i].includes(this.petInfoList[index].name) || data.pet[i] == "All") {
           this.overviewEventDates.push(data.date[i].toString());
           sortIndex.push(data.date[i].toString());
@@ -127,7 +145,7 @@ export class PetsComponent implements OnInit {
         }
       }
       this.overviewEventDates.sort();
-      for(let i = 0; i < sortIndex.length; i++) {
+      for (let i = 0; i < sortIndex.length; i++) {
         tmpEventHolder[this.overviewEventDates.indexOf(sortIndex[i])] = this.overviewEventTasks[i];
         tmpTimeHolder[this.overviewEventDates.indexOf(sortIndex[i])] = this.overViewEventTime[i];
       }

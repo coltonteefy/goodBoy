@@ -7,6 +7,7 @@ import {BehaviorSubject} from "rxjs/BehaviorSubject";
 export class PetInfoService {
   finishPetLoad: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   petInfo = [];
+  userInfo = [];
 
   constructor(private http: HttpClient) { }
 
@@ -15,6 +16,14 @@ export class PetInfoService {
       .subscribe(res => {
         this.petInfo.push(res);
         this.finishPetLoad.next(true);
+      })
+  }
+
+  getUserPets() {
+    return this.http.get('./assets/users.json')
+      .subscribe(res => {
+        this.userInfo.push(res);
+        // console.log(this.userInfo);
       })
   }
 }

@@ -45,8 +45,6 @@ export class MapComponent implements OnInit {
   ngOnInit() {
     this.searchControl = new FormControl();
     this.getUserLocation();
-
-    //load Places Autocomplete
   }
 
   private getUserLocation() {
