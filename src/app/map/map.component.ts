@@ -4,8 +4,6 @@ import {FormControl} from "@angular/forms";
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
 
-// https://angular-maps.com/api-docs/agm-core/components/AgmMap.html
-// https://www.npmjs.com/package/agm-direction
 
 @Component({
   selector: 'app-map',
