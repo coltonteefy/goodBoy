@@ -4,10 +4,14 @@ var path = require('path');
 
 app.use(express.static(path.join(__dirname, '/dist')));
 const pets = require(path.join(__dirname, '/dist/assets/pets.json'));
-
+const calendar = require(path.join(__dirname, '/dist/assets/calendar-events.json'));
 
 app.get('/pets', function(req, res) {
   res.json(pets)
+});
+
+app.get('/calendar', function(req, res) {
+  res.json(calendar)
 });
 
 app.get("/*", function (req, res) {
