@@ -3,12 +3,12 @@ const app = express();
 var path = require('path');
 
 app.use(express.static(path.join(__dirname, '/dist')));
-const calendar = require(path.join(__dirname, '/dist/assets/calendar-events.json'));
+// const calendar = require(path.join(__dirname, '/dist/assets/calendar-events.json'));
 const pets = require(path.join(__dirname, '/dist/assets/pets.json'));
 
-app.get('/calendar-events', (req, res) => res.json(calendar))
+// app.get('/calendar-events', (req, res) => res.json(calendar))
 app.get('/pets', (req, res) => res.json(pets))
-app.get('/**', (req, res, next) => res.sendFile(path.join(__dirname, '/dist/index.html')))
+app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '/dist/index.html')))
 
 var port = process.env.PORT || 3000;
 app.listen(port, console.log("Listening on port 3000"));
