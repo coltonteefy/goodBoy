@@ -10,13 +10,6 @@ agm-map {
 }
 
 .search-info {
-  /*position: relative;*/
-  /*z-index: 1;*/
-  /*width: 400px;*/
-  /*padding: 10px;*/
-  /*background: white;*/
-  /*border-radius: 4px;*/
-  /*box-shadow: 0px 3px 16px 1px #000000b3;*/
   position: absolute;
   z-index: 1;
   width: 452px;
@@ -31,12 +24,6 @@ agm-map {
 }
 
 .map-container {
-  /*height: 100%;*/
-  /*width: 100%;*/
-  /*position:absolute;*/
-  /*top: 0;*/
-  /*left: 0;*/
-  /*z-index: 0;*/
   height: 100%;
   width: 70%;
   position: absolute;
@@ -146,4 +133,10 @@ input {
 
 .close-direction:hover {
   color: #1158af;
+}
+
+@media screen and (max-width: 450px) {
+  .search-info {
+    width: 100%;
+  }
 }
