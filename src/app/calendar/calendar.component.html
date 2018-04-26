@@ -51,15 +51,19 @@
              [ngClass]="{'highlight-today': i == today, 'shift-date':eventDataCollection[0].task[i] != ''}">{{i}}
         </div>
       </div>
-      <div class="task-container col-lg-12" [ngClass]="{'events':eventDataCollection[0].task[i] != ''}">
-        <div>{{eventDataCollection[0].task[i]}}</div>
+      <div class="task-container col-lg-12" [ngClass]="{'events':eventDataCollection[0].task[i] != ''}"
+           (click)="openViewEvent()" data-toggle="modal"
+           data-target="#openEventModal">
+        <!--<div>{{eventDataCollection[0].task[i]}}</div>-->
+        <div *ngIf="eventDataCollection[0].task[i]"><i class="event-dot fas fa-calendar"></i></div>
       </div>
     </div>
   </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="addEventModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="addEventModalLabel"
+<div class="modal fade" id="addEventModal" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="addEventModalLabel"
      aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -70,7 +74,7 @@
           </button>
         </div>
         <div class="add-txt-container">
-          <h4 id="add-txt">New event on {{currentYear}} {{monthNames[monthNum]}} {{boxIndex}}</h4>
+          <h4 class="add-txt">New event on {{currentYear}} {{monthNames[monthNum]}} {{boxIndex}}</h4>
         </div>
 
       </div>
@@ -103,6 +107,44 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
         <button type="button" class="btn btn-primary" (click)="addNewEvent()" data-dismiss="modal">Add Event</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="openEventModal" data-backdrop="static" tabindex="-1" role="dialog"
+     aria-labelledby="openEventModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header row">
+        <div class="btn-container col-12">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="add-txt-container">
+            <h4 class="add-txt">Event on {{currentYear}} {{monthNames[monthNum]}} {{boxIndex}}</h4>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body open-event">
+        <div class="col-lg-12"
+             (click)="openViewEvent()" data-toggle="modal"
+             data-target="#openEventModal">
+          <div class="pets-involved-container">
+            <h4>Who:</h4>
+            <div>{{petsInvolved}}</div>
+          </div>
+          <div class="event-modal-container">
+            <h4>Event:</h4>
+            <div>{{eventDataCollection[0].task[boxIndex]}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal"
+                data-target="#addEventModal">Add New Event</button>
       </div>
     </div>
   </div>

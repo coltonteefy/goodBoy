@@ -67,6 +67,17 @@
   width: 14%;
 }
 
+.open-event {
+  border: 1px solid #a5a5a5;
+  margin: 0 auto;
+  width: 90%;
+  border-radius: 2px;
+}
+
+.pets-involved-container, .event-modal-container {
+  padding: 15px;
+}
+
 @media screen and (max-width: 729px) {
   .calendar-col {
     width: 13%;
@@ -141,6 +152,10 @@
 }
 
 @media screen and (max-width: 450px) {
+  .day-num-container {
+    width: 25%;
+  }
+
   .date-picker-container {
     margin-top: 15px;
   }
@@ -162,6 +177,7 @@
 
 .modal {
   color: black;
+  overflow-y: scroll;
 }
 
 .modal-footer, .modal-header {
@@ -172,7 +188,6 @@
   font-size: 25px;
   width: 100%;
   text-align: center;
-  /*color: #8f3141;*/
   margin-bottom: 10px;
 }
 
@@ -265,6 +280,11 @@
 .box-text {
   font-size: 15px;
   color: #4e4e4e;
+}
+
+.event-dot {
+  color: #565658d4;
+  font-size: 13px;
 }
 
 

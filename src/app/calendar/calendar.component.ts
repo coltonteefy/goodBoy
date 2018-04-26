@@ -40,6 +40,10 @@ export class CalendarComponent implements OnInit {
   petName = [];
   petInfoList = [];
   tmpPicHolder = [];
+  eventViewOpen = false;
+  petsInvolved = [];
+  infoIndex = 0;
+  calendarEvents = [];
 
   constructor(private eventsService:CalendarEventsService, private petInfoService:PetInfoService) {
   }
@@ -57,6 +61,10 @@ export class CalendarComponent implements OnInit {
         this.taskEventList = [];
         this.dateEventList = this.eventsService.events[0].date;
         this.taskEventList = this.eventsService.events[0].task;
+
+        this.calendarEvents = [];
+        this.calendarEvents = this.eventsService.events;
+
         this.numOfDaysInMonth();
       }
     });
@@ -215,6 +223,21 @@ export class CalendarComponent implements OnInit {
     }
   }
 
+  openViewEvent() {
+    this.createPetList();
+    this.eventViewOpen = true;
+    this.petsInvolved = [];
+    console.log(this.eventDataCollection[0].task[this.boxIndex]);
+    console.log(this.eventDataCollection[0].formattedDate[this.boxIndex -1]);
+
+    this.calendarEvents.map(data => {
+      this.infoIndex = data.date.indexOf(this.eventDataCollection[0].formattedDate[this.boxIndex -1]);
+      this.petsInvolved.push(data.pet[this.infoIndex]);
+    });
+
+    console.log(this.eventDataCollection[0]);
+  }
+
   closeModal() {
     for (let i = 0; i < this.tmpPicHolder.length; i++) {
       if (this.tmpPicHolder[i] != undefined) {
@@ -222,4 +245,6 @@ export class CalendarComponent implements OnInit {
       }
     }
   }
+
+
 }
