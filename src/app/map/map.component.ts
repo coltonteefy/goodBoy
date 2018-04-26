@@ -27,6 +27,7 @@ export class MapComponent implements OnInit {
   hours:any;
   dir:any;
   applyDirections = false;
+  searchInfoOpen = false;
 
   @ViewChild("search")
   public searchElementRef:ElementRef;
@@ -52,11 +53,29 @@ export class MapComponent implements OnInit {
         this.lng = position.coords.longitude;
         this.directionLatitudeList.push(this.lat);
         this.directionLongitudeList.push(this.lng);
-      });
+        console.log("WORKED", this.lat, this.lng, position);
+      },
+        error => {
+          switch (error.code) {
+            case 1:
+              console.log('Permission Denied');
+              break;
+            case 2:
+              console.log('Position Unavailable');
+              break;
+            case 3:
+              console.log('Timeout');
+              break;
+          }
+        }, {
+          maximumAge:60000,
+          timeout:6000,
+          enableHighAccuracy:true
+        });
     }
   }
 
-  calculateDistance(lat1:number, lat2:number, lng1:number, lng2:number) {
+  static calculateDistance(lat1:number, lat2:number, lng1:number, lng2:number) {
     let radLat1 = Math.PI * lat1 / 180;
     let radLat2 = Math.PI * lat2 / 180;
     let theta = lng2 - lng1;
@@ -143,8 +162,8 @@ export class MapComponent implements OnInit {
           this.lng = place.geometry.location.lng();
           this.directionLatitudeList.push(this.lat);
           this.directionLongitudeList.push(this.lng);
-          this.miles = this.calculateDistance(this.directionLatitudeList[0], this.directionLatitudeList[1], this.directionLongitudeList[0], this.directionLongitudeList[1]).toFixed(1);
-          this.zoom = 16;
+          this.miles = MapComponent.calculateDistance(this.directionLatitudeList[0], this.directionLatitudeList[1], this.directionLongitudeList[0], this.directionLongitudeList[1]).toFixed(1);
+          this.zoom = 18;
         });
       });
     });
@@ -212,7 +231,7 @@ export class MapComponent implements OnInit {
   }
 
   toggleDirectionPanel() {
-    if( this.applyDirections) {
+    if (this.applyDirections) {
       this.directionLatitudeList = [];
       this.directionLongitudeList = [];
       this.dir = {
@@ -220,8 +239,30 @@ export class MapComponent implements OnInit {
         destination: {}
       };
       this.applyDirections = !this.applyDirections;
+      this.arrowClose();
       document.getElementById('myPanel').style.display = 'none';
-      console.log(this.applyDirections, this.dir);
+
+      this.getUserLocation();
+      console.log(this.lat, "LAT!!");
     }
+  }
+
+  dropDown() {
+    document.getElementById('search-info').style.height = '100%';
+    document.getElementById('search-info').style.transition = '1s';
+    this.searchInfoOpen = true;
+  }
+
+  arrowClose() {
+    if (this.applyDirections) {
+      document.getElementById('search-info').style.height = '35%';
+      document.getElementById('search-info').style.transition = '1s';
+    }
+
+    if (!this.applyDirections) {
+      document.getElementById('search-info').style.height = '23%';
+      document.getElementById('search-info').style.transition = '1s';
+    }
+    this.searchInfoOpen = false;
   }
 }

@@ -6,13 +6,25 @@
 
 agm-map {
   height: 100%;
-  width:100%;
+  width: 100%;
+}
+
+.dropdown {
+  position: relative;
+  bottom: 17px;
+}
+
+.down-arrow, .up-arrow {
+  position: relative;
+  left: 50%;
+  font-size: 20px;
 }
 
 .search-info {
   position: absolute;
   z-index: 1;
   width: 452px;
+  height: 23%;
   padding: 10px;
   background: white;
   border-radius: 4px;
@@ -25,8 +37,9 @@ agm-map {
 
 .map-container {
   height: 100%;
-  width: 70%;
+  width: 100%;
   position: absolute;
+  left: 0;
   top: 0;
   right: 0;
   z-index: 0;
@@ -136,7 +149,5 @@ input {
 }
 
 @media screen and (max-width: 450px) {
-  .search-info {
-    width: 100%;
-  }
+
 }

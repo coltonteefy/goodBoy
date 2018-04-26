@@ -1,10 +1,12 @@
 <div class="container">
-  <div class="search-info">
+  <div class="search-info" id="search-info">
+
     <div *ngIf="!applyDirections" class="form-group">
       <label>Search</label>
       <input placeholder="search for location" type="text" class="form-control" #search [formControl]="searchControl"
              (keyup)="searchChanges()">
     </div>
+
     <div *ngIf="applyDirections" class="form-group">
       <div class="col-12">
         <button class="close-direction float-right" type="button" (click)="toggleDirectionPanel()">back to search
@@ -15,9 +17,18 @@
       <label id="destination">End</label>
       <input placeholder="{{address}}" type="text" class="form-control" #destination (keyup)="destinationChanges()">
     </div>
+
+    <div *ngIf="!searchInfoOpen" class="col-12 dropdown" (click)="dropDown()">
+      <i class="fas fa-chevron-down down-arrow"></i>
+    </div>
+    <div *ngIf="searchInfoOpen" class="col-12 dropdown" (click)="arrowClose()">
+      <i class="fas fa-chevron-up up-arrow"></i>
+    </div>
+
     <div class="data">
       <div *ngIf="!applyDirections" class="return-info row">
-        <div *ngIf="name != ''" class="data-back col-12"><h3>{{name}}</h3>
+        <div *ngIf="name != ''" class="data-back col-12">
+          <h3>{{name}}</h3>
           <button class="direction-btn" type="button" (click)="getDirection()">Get directions</button>
         </div>
         <div *ngIf="address != ''" class="data-back col-12"><h4>Address:</h4> {{address}}</div>
