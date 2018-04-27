@@ -17,10 +17,11 @@ export class AddPetFormComponent implements OnInit {
   age:number;
   gender:string;
   medication:string;
+  treats:string;
 
   newPetInfo = {};
 
-  constructor(private petInfoService:PetInfoService, private petComponent: PetsComponent) {
+  constructor(private petInfoService:PetInfoService, private petComponent:PetsComponent) {
   }
 
   ngOnInit() {
@@ -29,19 +30,20 @@ export class AddPetFormComponent implements OnInit {
   submitNewPet() {
     this.petInfoService.finishPetLoad.next(false);
     console.log(this.pic, "PIC");
-    if(this.pic == undefined) {
+    if (this.pic == undefined) {
       this.pic = './assets/images/no-pic.png';
     }
 
     console.log(this.pic, "PIC");
-    if( this.name != "" && this.age != null && this.gender != "") {
-      this.name = this.name.charAt(0).toUpperCase() + this.name.substring(1,this.name.length);
+    if (this.name != "" && this.age != null && this.gender != "") {
+      this.name = this.name.charAt(0).toUpperCase() + this.name.substring(1, this.name.length);
       this.newPetInfo = {
         pic: this.pic,
         name: this.name,
         age: this.age,
         gender: this.gender,
-        medication: this.medication
+        medication: this.medication,
+        treats: this.treats
       };
 
       this.petInfoService.petInfo[0].pets.push(this.newPetInfo);
@@ -51,6 +53,7 @@ export class AddPetFormComponent implements OnInit {
       this.age = 0;
       this.gender = "";
       this.medication = "";
+      this.treats = "";
 
       this.petComponent.hidePetForm = 'hide';
     }

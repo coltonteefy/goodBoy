@@ -54,8 +54,7 @@
       <div class="task-container col-lg-12" [ngClass]="{'events':eventDataCollection[0].task[i] != ''}"
            (click)="openViewEvent()" data-toggle="modal"
            data-target="#openEventModal">
-        <!--<div>{{eventDataCollection[0].task[i]}}</div>-->
-        <div *ngIf="eventDataCollection[0].task[i]"><i class="event-dot fas fa-calendar"></i></div>
+        <div *ngIf="eventDataCollection[0].task[i]"><i class="event-dot fas fa-check"></i></div>
       </div>
     </div>
   </div>

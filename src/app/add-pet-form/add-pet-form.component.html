@@ -1,4 +1,3 @@
-
 <div class="container">
   <form action="">
     <div class="row">
@@ -6,9 +5,7 @@
         <label>Picture</label>
       </div>
       <div class="col-75">
-        <!--<div class="file-btn-container"><label for="pic" class="file-btn" type="button" [(ngModel)]="pic">Select File</label> </div>-->
         <input class="pic-input" type="text" id="pic" name="pic" [(ngModel)]="pic" placeholder="Add picture..">
-        <!--<input class="pic-input" type="file" name="pic" id="pic">-->
       </div>
     </div>
     <div class="row">
@@ -46,16 +43,22 @@
     </div>
     <div class="row">
       <div class="col-25">
-        <label for="subject">Medications</label>
+        <label for="medication">Medications</label>
       </div>
       <div class="col-75">
-        <textarea id="subject" name="subject" [(ngModel)]="medication"  placeholder="This will change.." style="height:200px"></textarea>
+        <textarea id="medication" name="medication" [(ngModel)]="medication"  placeholder="Medications for {{name}}.." style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="treats">Favorite treats</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="treats" name="treats" [(ngModel)]="treats" placeholder="Favorite treats....">
       </div>
     </div>
     <div class="row">
       <input type="submit" value="Submit" (click)="submitNewPet()">
     </div>
   </form>
-
-  <!--{{pic}}<br>{{gender}}<br>{{name}}<br>{{age}}<br>{{medication}}-->
 </div>
