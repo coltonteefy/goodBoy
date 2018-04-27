@@ -3,6 +3,8 @@ import 'rxjs/add/operator/map'
 import {CalendarEventsService} from "../services/calendar-events.service";
 import * as moment from 'moment'
 import {PetInfoService} from "../services/pet-info.service";
+import { Router } from '@angular/router';
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-calendar',
@@ -45,10 +47,15 @@ export class CalendarComponent implements OnInit {
   infoIndex = 0;
   calendarEvents = [];
 
-  constructor(private eventsService:CalendarEventsService, private petInfoService:PetInfoService) {
+  constructor(private eventsService:CalendarEventsService, 
+              private petInfoService:PetInfoService, 
+              private loginService: LoginService, 
+              private router: Router) {
   }
 
   ngOnInit() {
+    this.loginService.checkRoute(this.router.url);
+    
     this.petInfoService.finishPetLoad.subscribe(data => {
       if (data == true) {
         this.petInfoList = this.petInfoService.petInfo[0].pets;

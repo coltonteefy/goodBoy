@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import {LoginService} from "../services/login.service";
-import { Router, NavigationStart } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,10 +11,11 @@ import { Router, NavigationStart } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginSuccess = false;
 
-  constructor(private loginService: LoginService, private router: Router) { }
+  constructor(private loginService: LoginService,
+              private router: Router) { }
 
   ngOnInit() {
-    console.log(this.router.url);
+    this.loginService.checkRoute(this.router.url);
   }
 
   loginToggle() {

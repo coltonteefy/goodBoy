@@ -1,8 +1,9 @@
 import {Component, OnInit, NgZone, ViewChild, ElementRef} from '@angular/core';
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {FormControl} from "@angular/forms";
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
+import { Router } from '@angular/router';
+import {LoginService} from "../services/login.service";
 
 
 @Component({
@@ -38,10 +39,15 @@ export class MapComponent implements OnInit {
   @ViewChild("destination")
   public destinationElementRef:ElementRef;
 
-  constructor(private mapsAPILoader:MapsAPILoader, private ngZone:NgZone) {
+  constructor(private mapsAPILoader:MapsAPILoader, 
+              private ngZone:NgZone,
+              private router: Router,
+              private loginService: LoginService) {
   }
 
   ngOnInit() {
+    this.loginService.checkRoute(this.router.url);
+    
     this.searchControl = new FormControl();
     this.getUserLocation();
   }

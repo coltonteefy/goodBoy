@@ -13,4 +13,12 @@ export class LoginService {
     data = !data;
     this.store.next(data);
   }
+
+  checkRoute(route: string) {
+    if(route != '/login') {
+      this.store.next(true);
+    } else {
+      this.store.next(false);
+    }
+  }
 }

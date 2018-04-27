@@ -3,7 +3,7 @@ import {LoginService} from "../services/login.service";
 import {trigger, state, style, animate, transition} from '@angular/animations';
 import {PetInfoService} from "../services/pet-info.service";
 import {CalendarEventsService} from "../services/calendar-events.service";
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pets',
@@ -49,16 +49,20 @@ export class PetsComponent implements OnInit {
   overViewEventTime = [];
   listLoaded = false;
 
-  currentUser = "joe";
-
-  userInfo = [];
-
   constructor(private loginService:LoginService,
               private petInfoService:PetInfoService,
-              private calendarEventService:CalendarEventsService) {
+              private calendarEventService:CalendarEventsService,
+              private router: Router) {
   }
 
   ngOnInit() {
+    this.loginService.checkRoute(this.router.url);
+    // this.loginService.store.subscribe(data => {
+    //   if (!data) {
+    //     this.loginService.toggleLoginSuccess(data);
+    //   }
+    // });
+
     this.calendarEventService.isFinished.subscribe(data => {
       if (data == true) {
         this.calendarEvents = [];
@@ -68,19 +72,9 @@ export class PetsComponent implements OnInit {
       }
     });
 
-    this.loginService.store.subscribe(data => {
-      if (!data) {
-        this.loginService.toggleLoginSuccess(data);
-      }
-    });
-
     this.petInfoService.finishPetLoad.subscribe(data => {
       if (data == true) {
         this.petInfoList = this.petInfoService.petInfo[0].pets;
-
-        this.petInfoService.userInfo.map(res => {
-          console.log("HELLO" + res);
-        })
       }
     });
 
