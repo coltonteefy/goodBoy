@@ -7,14 +7,16 @@ const pets = require(path.join(__dirname, '/dist/assets/pets.json'));
 const calendar = require(path.join(__dirname, '/dist/assets/calendar-events.json'));
 
 app.get('/pets', function(req, res) {
-  res.json(pets)
+  res.json(pets);
+  res.redirect('/pets');
 });
 
 app.get('/calendar', function(req, res) {
-  res.json(calendar)
+  res.json(calendar);
+  res.redirect('/calendar');
 });
 
-app.get("/*", function (req, res) {
+app.get("/**", function (req, res) {
   res.sendFile(path.join(__dirname, '/dist/index.html'))
 });
 

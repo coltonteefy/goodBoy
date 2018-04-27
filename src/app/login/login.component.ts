@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   loginToggle() {
+    
     this.loginService.toggleLoginSuccess(this.loginSuccess)
   }
 }
