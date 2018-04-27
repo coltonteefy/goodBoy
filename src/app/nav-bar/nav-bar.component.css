@@ -67,14 +67,13 @@ a.active {
 @media screen and (max-width: 430px){
   .icon-txt {
     color: white;
-    margin: 0 auto;
     width: fit-content;
   }
 }
 
 @media(max-width: 34em) {
   .nav-item {
-    padding: 8px;
+    padding-left: 20px;
   }
 }
 
